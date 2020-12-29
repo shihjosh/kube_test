@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hs-cron
+  name: hs-cron
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: hs-cron
+  template:
+    metadata:
+      labels:
+        component: hs-cron
+    spec:
+      containers:
+        - name: hs-cron
+          image: 192.168.172.199:5000/hs-plus:<BUILD_TAG>
+          #image: joshshih/hipo_test:v0.2
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          env:
+            - name: DB_TYPE
+              value: 'mysql'
+            - name: DB_HOST
+              value: 'mysql-svc'
+            - name: DB_PORT
+              value: '3306'
+            - name: DB_DATABASE
+              value: 'octobercms'
+            - name: DB_USERNAME
+              value: 'root'
+            - name: DB_PASSWORD
+              value: 'sv28991410)(*'
+            - name: APP_DEBUG
+              value: 'true'
+            - name: CMS_LINK_POLICY
+              value: 'secure'
+            - name: VERSION_INFO
+              value: 'true'
+            - name: LEARNHOW_NCU_URL
+              value: 'http://graph-svc:3005/v1/'
+            - name: ENABLE_CRON
+              value: true
+          volumeMounts:
+            - name: hs-plus-storage
+              mountPath: /var/www/html/storage
+      volumes:
+           - name: hs-plus-storage
+             persistentVolumeClaim:
+               claimName: hs-storage-pvc
