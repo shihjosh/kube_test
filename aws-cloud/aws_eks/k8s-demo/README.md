@@ -15,6 +15,8 @@
 2.trusted entity 選擇 AWS service，use case 則是選擇 EKS cluster
 3.設定 tag & review(如果有需要)，最後則是輸入一個 unique role name(例如 eksClusterRole)，到這邊就完成了 role 的建立
 
+---
+
 1.Create Namespace
 ```Bash
 $ kubectl apply -f namespaces.yaml
