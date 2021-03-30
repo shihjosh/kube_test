@@ -21,17 +21,17 @@ $eksctl create cluster \
 --nodes 2  # 開啟幾台
 ```
 
-1.Create Namespace
+1. Create Namespace
 ```Bash
 $ kubectl apply -f namespaces.yaml
 ```
-2.Create some resources
+2. Create some resources
 ```Bash
 $ kubectl apply -n example-app -f secrets.yaml
 $ kubectl apply -n example-app -f configmap.yaml
 $ kubectl apply -n example-app -f deployment.yaml
 ```
-3.change the `type: LoadBalancer`
+3. change the `type: LoadBalancer`
 ```Bash
 $ kubectl apply -n example-app -f service.yaml
 ```
