@@ -4,8 +4,8 @@
 安裝 AWS CLI
 安裝 eksctl
 安裝 kubectl
-創建 IAM:
 
+創建 IAM:
 具有 創建 EKS 權限
 具有 創建EC2 權限
 
