@@ -10,6 +10,16 @@
 - 具有 創建 EC2 權限
 
 ---
+##### create EKS cluster
+```Bash
+$eksctl create cluster \
+--name test-cluster \
+--version 1.18 \
+--region ap-northeast-1 \ #東京伺服器
+--nodegroup-name linux-nodes \
+--node-type t2.micro \ # EC2
+--nodes 2  # 開啟幾台
+```
 
 1.Create Namespace
 ```Bash
@@ -30,3 +40,8 @@ $ kubectl apply -n example-app -f service.yaml
 $ kubectl get svc -n example-app
 ```
 利用網頁連線 EXTERNAL-IP
+
+##### Delete EKS cluster
+```Bash
+$ eksctl delete cluster --name test-cluster
+```
