@@ -1,5 +1,8 @@
 # 安裝 Docker
 
+環境:
+- ubuntu 20.04 LTS
+
 ```bash
 #系統更新
 $ sudo apt update
@@ -64,7 +67,7 @@ $ sudo docker run hello-world
 
 我們可以把目前使用者加到docker群組裡面, 當docker service 起來時, 會以這個群組的成員來初始化相關服務
 
-```python
+```Bash
 $ sudo groupadd docker
 $ sudo usermod -aG docker $USER
 ```
