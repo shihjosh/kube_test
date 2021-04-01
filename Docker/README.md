@@ -74,6 +74,7 @@ $ sudo usermod -aG docker $USER
 
 以下是成功畫面----有空再補
 
+![alt tag](https://github.com/shihjosh/kube_test/blob/master/Docker/images/im_01.jpg)
 
 Malformed entry 52 in list file /etc/apt/sources.list (URI parse)
 
