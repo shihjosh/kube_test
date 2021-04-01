@@ -36,6 +36,8 @@ Oracle VM VirtualBox 6.1 主要設定:
 
 網路 介面卡
 
+![alt tag](https://github.com/shihjosh/kube_test/blob/master/aws-cloud/aws_eks/kubeadm/images/im_01.jpg)
+
 附加到: 橋接介面卡(模擬真實主機狀態)
 
 - 使用root 權限
@@ -155,6 +157,8 @@ $ sudo kubeadm token create --print-join-command
 
 完成圖:
 
+![alt tag](https://github.com/shihjosh/kube_test/blob/master/aws-cloud/aws_eks/kubeadm/images/im_02.jpg)
+
 測試:
 
 kubeadm 預設Master是不執行Pod工作，如果需要可以下指令一起分安工作
@@ -175,9 +179,13 @@ kubectl create deployment nginx --image=nginx:1.7.9
 
 如圖:
 
-Master-
+Master
+
+![alt tag](https://github.com/shihjosh/kube_test/blob/master/aws-cloud/aws_eks/kubeadm/images/im_03.jpg)
 
 node01-docker 會看到 deploument 的 nginx
+
+![alt tag](https://github.com/shihjosh/kube_test/blob/master/aws-cloud/aws_eks/kubeadm/images/im_04.jpg)
 
 其他設定:
 
