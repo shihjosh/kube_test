@@ -8,4 +8,5 @@ docker pull 命令從倉庫(docker hub)取得所需要的映像檔。
 $ sudo docker pull ubuntu:20.04
 ```
 下載完成後，就可以使用該映像檔了
+
 例如:建立一個容器。
