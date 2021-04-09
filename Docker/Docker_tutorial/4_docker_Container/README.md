@@ -15,10 +15,10 @@ Hello world
 $ sudo docker run -t -i ubuntu:14.04 /bin/bash
 root@74fe38d11401 :/#
 ```
-參數:
- -t:(--tty) 讓Docker分配一個虛擬終端（pseudo-tty) 
- -i:(--interactive) 互動模式,讓容器的標準輸入保持打開。
- -d:(--detach) 背景執行
+參數:<br />
+ -t: 讓Docker分配一個虛擬終端（pseudo-tty) <br />
+ -i: 互動模式,讓容器的標準輸入保持打開<br />
+ -d: 背景執行<br />
  > -t: --tty <br />
  -i: --interactive <br />
  -d: --detach
