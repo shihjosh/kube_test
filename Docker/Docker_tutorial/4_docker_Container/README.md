@@ -47,6 +47,7 @@ CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS
 
 ```
 關閉容器
+
 `docker stop <CONTAINER_ID>`
 
 `docker stop <Image>`
