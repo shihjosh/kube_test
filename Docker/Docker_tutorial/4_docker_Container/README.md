@@ -69,9 +69,8 @@ docker exec 是Docker內建的命令。
 查看已啟動的容器
 ```bash
 ~$ docker ps
-CONTAINER ID   IMAGE           COMMAND               CREATED         STATUS         PORTS                                            NAMES
-a15f02a4d83d   ubuntu:14.04    "/bin/bash"           4 seconds ago   Up 3 seconds                                                    gracious_wilbur
-
+CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES
+6f64bb234e90   13b66b487594   "/bin/bash"   3 seconds ago   Up 2 seconds             boring_gould
 ```
 進入容器
 ```bash
