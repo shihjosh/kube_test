@@ -64,7 +64,9 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 加入 -d 參數時，容器啟動後會進入背景執行。
 
 docker exec 是Docker內建的命令。
+
 `docker exec -t -i <CONTAINER_ID>  bash`
+
 `docker exec -t -i <CONTAINER_NAME>  bash`
 
 查看已啟動的容器
@@ -88,6 +90,7 @@ exit
 使用 docker rm 來刪除一個容器(Container)
 
 `docker rm -f <CONTAINER_ID>`
+
 `docker rm -f <CONTAINER_NAME>`
 
 參數:
@@ -96,4 +99,5 @@ exit
 ```bash
 ~$ docker rm -f a15f02a4d83d
 ```
+
 
