@@ -65,13 +65,16 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 docker exec 是Docker內建的命令。
 `docker exec -t -i <CONTAINER_ID>  bash`
+`docker exec -t -i <CONTAINER_NAME>  bash`
 
 查看已啟動的容器
 ```bash
 ~$ docker ps
 CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES
 6f64bb234e90   13b66b487594   "/bin/bash"   3 seconds ago   Up 2 seconds             boring_gould
+
 ```
+
 進入容器
 ```bash
 ~$ docker exec -t -i a15f02a4d83d  bash
@@ -79,3 +82,18 @@ root@a15f02a4d83d:/#
 root@a15f02a4d83d:/# exit  //離開
 exit
 ```
+
+刪除容器(Container)
+
+使用 docker rm 來刪除一個容器(Container)
+
+`docker rm -f <CONTAINER_ID>`
+`docker rm -f <CONTAINER_NAME>`
+
+參數:
+-f: 強制刪除
+
+```bash
+~$ docker rm -f a15f02a4d83d
+```
+
