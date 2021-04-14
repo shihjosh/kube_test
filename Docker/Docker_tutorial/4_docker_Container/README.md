@@ -59,4 +59,24 @@ CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 
+### 進入容器(Container)
 
+加入 -d 參數時，容器啟動後會進入背景執行。
+
+docker exec 是Docker內建的命令。
+`docker exec -t -i <CONTAINER_ID>  bash`
+
+查看已啟動的容器
+```bash
+~$ docker ps
+CONTAINER ID   IMAGE           COMMAND               CREATED         STATUS         PORTS                                            NAMES
+a15f02a4d83d   ubuntu:14.04    "/bin/bash"           4 seconds ago   Up 3 seconds                                                    gracious_wilbur
+
+```
+進入容器
+```bash
+~$ docker exec -t -i a15f02a4d83d  bash
+root@a15f02a4d83d:/# 
+root@a15f02a4d83d:/# exit  //離開
+exit
+```
