@@ -27,7 +27,7 @@ $ kubectl apply -f namespaces.yaml
 ```
 2. Create some resources
 ```Bash
-$ kubectl apply -n example-app -f secrets.yaml
+$ kubectl apply -n example-app -f secret.yaml
 $ kubectl apply -n example-app -f configmap.yaml
 $ kubectl apply -n example-app -f deployment.yaml
 ```
