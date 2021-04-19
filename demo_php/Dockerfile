@@ -52,6 +52,7 @@ RUN apt-get -y update && \
 # Enable apache modules
 RUN a2enmod rewrite headers
 
+# For Dev 
 RUN apt update
 RUN apt install vim -y
 
@@ -61,5 +62,7 @@ RUN rm -rf /usr/src/*
 COPY src /var/www/html/
 
 RUN chown -R www-data:www-data /var/www/html/
+
+# /var/www/html/ /run/desktop/mnt/host/c/Users/clayk/Desktop/test
 
 EXPOSE 80
