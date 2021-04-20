@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: s3-provider
+  name: s3-provider
+spec:
+  template:
+    metadata:
+      labels:
+        app: s3-provider
+    spec:
+      containers:
+        - name: s3fuse
+          image: freegroup/kube-s3
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "umount -f /var/s3"]
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - SYS_ADMIN
+          # use ALL  entries in the config map as environment variables
+          envFrom:
+            - configMapRef:
+                name: s3-config
+          volumeMounts:
+            - name: devfuse
+              mountPath: /dev/fuse
+            - name: mntdatas3fs
+              mountPath: /var/s3:shared
+      volumes:
+        - name: devfuse
+          hostPath:
+            path: /dev/fuse
+        - name: mntdatas3fs
+          hostPath:
+            path: /mnt/data-s3-fs
