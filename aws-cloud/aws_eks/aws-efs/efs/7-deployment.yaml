@@ -27,11 +27,11 @@ spec:
             - name: PROVISIONER_NAME
               value: efs-storage
             - name: NFS_SERVER
-              value: 172.31.47.229
+              value: fs-41211346.efs.us-west-2.amazonaws.com #172.31.47.229
             - name: NFS_PATH
               value: /
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 172.31.47.229
+            server: fs-41211346.efs.us-west-2.amazonaws.com #172.31.47.229
             path: /
