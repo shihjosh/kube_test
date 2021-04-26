@@ -4,6 +4,8 @@
 
 ### Docker Hub
 
+[前往註冊Docker Hub的帳號](https://hub.docker.com/ "前往註冊Docker Hub的帳號")
+
 Docker 官方提供了一個公共倉庫 Docker Hub，都可以透過在 Docker Hub 中直接下載映像檔來使用。
 
 ### 基本操作
