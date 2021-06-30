@@ -20,7 +20,7 @@ $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &
 $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 $ wget https://golang.org/dl/go1.15.8.linux-amd64.tar.gz && sudo tar -C /usr/local -xzf go1.15.8.linux-amd64.tar.gz && export PATH=$PATH:/usr/local/go/bin
 $ GO111MODULE="on" go get sigs.k8s.io/kind@v0.10.0 && sudo su
-$ export PATH=$PATH:/home/josh/go/bin <---check /home/????/go/bin
+$ export PATH=$PATH:/home/<user>/go/bin <---check /home/<user>/go/bin
 $ kind create cluster
 $ kind get clusters && kubectl cluster-info --context kind-kind
 $ kubectl run mypod --image=nginx && kubectl get pods -w
