@@ -11,17 +11,17 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 3000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: purple-service
-spec:
-  # type: NodePort
-  type: ClusterIP
-  selector:
-    app: purple-nginx
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: purple-service
+# spec:
+#   # type: NodePort
+#   type: ClusterIP
+#   selector:
+#     app: purple-nginx
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 3000
