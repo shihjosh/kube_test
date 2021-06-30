@@ -40,3 +40,6 @@ $ sudo usermod -aG docker $USER
 ```
 
 https://kind.sigs.k8s.io/
+
+kindest/node:
+https://github.com/kubernetes-sigs/kind/releases
