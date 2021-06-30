@@ -7,17 +7,17 @@ nodes:
     extraPortMappings:
       - containerPort: 80
         hostPort: 80
-        listenAddress: "0.0.0.0" # Optional, defaults to "0.0.0.0"
+        listenAddress: "127.0.0.1" # Optional, defaults to "0.0.0.0"
         # protocol: udp # Optional, defaults to tcp
-        protocol: udp # Optional, defaults to tcp
+        protocol: TCP # Optional, defaults to tcp
       - containerPort: 443
         hostPort: 443
-        listenAddress: "0.0.0.0"
-        protocol: udp
+        listenAddress: "127.0.0.1"
+        protocol: TCP
       - containerPort: 8080
         hostPort: 8080
-        listenAddress: "0.0.0.0"
-        protocol: udp
+        listenAddress: "127.0.0.1"
+        protocol: TCP
   - role: worker
     image: kindest/node:v1.18.15@sha256:5c1b980c4d0e0e8e7eb9f36f7df525d079a96169c8a8f20d8bd108c0d0889cc4
   - role: worker
