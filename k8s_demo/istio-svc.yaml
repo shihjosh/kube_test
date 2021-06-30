@@ -1,0 +1,35 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: hs-igw
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http-plus
+        protocol: HTTP
+      hosts:
+        - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: blue-vs
+spec:
+  hosts:
+    - "*"
+    # - "kiali.joshshih.xyz"
+  gateways:
+    - hs-igw
+  http:
+    - headers:
+        request:
+          set:
+            X-Forwarded-Port: "80"
+      route:
+        - destination:
+            port:
+              number: 3000
+            host: blue-service
