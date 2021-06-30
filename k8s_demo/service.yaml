@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: blue-service
 spec:
-  type: NodePort
+  # type: NodePort
+  type: ClusterIP
   selector:
     app: blue-nginx
   ports:
@@ -16,7 +17,8 @@ kind: Service
 metadata:
   name: purple-service
 spec:
-  type: NodePort
+  # type: NodePort
+  type: ClusterIP
   selector:
     app: purple-nginx
   ports:
