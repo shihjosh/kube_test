@@ -4,7 +4,7 @@ metadata:
   name: web
 spec:
   rules:
-    - host: blue.demo.com
+    - host: "*" # blue.demo.com
       http:
         paths:
           - backend:
