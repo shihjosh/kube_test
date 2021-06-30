@@ -39,6 +39,14 @@ $ sudo groupadd docker
 $ sudo usermod -aG docker $USER
 ```
 
+基本指令
+```Bash
+$ kind create cluster # 創建集群
+$ kind delete cluster # 刪除集群
+$ kind create cluster --config kind-example-config.yaml # 創建自訂集群
+```
+
+
 https://kind.sigs.k8s.io/
 
 kindest/node:
