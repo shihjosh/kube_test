@@ -4,6 +4,9 @@ apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
   - role: control-plane
     image: kindest/node:v1.18.15@sha256:5c1b980c4d0e0e8e7eb9f36f7df525d079a96169c8a8f20d8bd108c0d0889cc4
+    extraMounts:
+      - hostPath: /home/sv/kind_data/k_mysql
+        containerPath: /k_mysql
     extraPortMappings:
       - containerPort: 30000
         hostPort: 80
@@ -24,7 +27,16 @@ nodes:
         protocol: TCP
   - role: worker
     image: kindest/node:v1.18.15@sha256:5c1b980c4d0e0e8e7eb9f36f7df525d079a96169c8a8f20d8bd108c0d0889cc4
+    extraMounts:
+      - hostPath: /home/sv/kind_data/k_mysql
+        containerPath: /k_mysql
   - role: worker
     image: kindest/node:v1.18.15@sha256:5c1b980c4d0e0e8e7eb9f36f7df525d079a96169c8a8f20d8bd108c0d0889cc4
+    extraMounts:
+      - hostPath: /home/sv/kind_data/k_mysql
+        containerPath: /k_mysql
   - role: worker
     image: kindest/node:v1.18.15@sha256:5c1b980c4d0e0e8e7eb9f36f7df525d079a96169c8a8f20d8bd108c0d0889cc4
+    extraMounts:
+      - hostPath: /home/sv/kind_data/k_mysql
+        containerPath: /k_mysql
