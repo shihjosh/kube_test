@@ -31,5 +31,5 @@ spec:
       route:
         - destination:
             port:
-              number: 80
-            host: blue-service
+              number: 3000
+            host: purple-nginx

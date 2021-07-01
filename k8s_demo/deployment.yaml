@@ -18,22 +18,22 @@ spec:
           ports:
             - containerPort: 3000
 ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: purple-nginx
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: purple-nginx
-#   template:
-#     metadata:
-#       labels:
-#         app: purple-nginx
-#     spec:
-#       containers:
-#         - name: nginx
-#           image: hcwxd/purple-whale
-#           ports:
-#             - containerPort: 3000
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: purple-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: purple-nginx
+  template:
+    metadata:
+      labels:
+        app: purple-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: hcwxd/purple-whale
+          ports:
+            - containerPort: 3000
