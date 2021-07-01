@@ -12,6 +12,12 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
+    - port:
+        number: 30000
+        name: http-plus
+        protocol: HTTP
+      hosts:
+        - "*"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -24,12 +30,8 @@ spec:
   gateways:
     - hs-igw
   http:
-    - headers:
-        request:
-          set:
-            X-Forwarded-Port: "80"
-      route:
-        - destination:
-            port:
-              number: 3000
-            host: purple-nginx
+    route:
+      - destination:
+          port:
+            number: 3000
+          host: purple-nginx
