@@ -14,7 +14,7 @@ spec:
         - "*"
     - port:
         number: 30000
-        name: http-plus
+        name: http-plus2
         protocol: HTTP
       hosts:
         - "*"
