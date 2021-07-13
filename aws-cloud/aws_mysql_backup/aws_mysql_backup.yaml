@@ -21,7 +21,7 @@ spec:
             - containerPort: 80
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "28991410"
+              value: ""
             - name: ACCESS_KEY_ID
               value: ""
             - name: SECRET_ACCSS_KEY
