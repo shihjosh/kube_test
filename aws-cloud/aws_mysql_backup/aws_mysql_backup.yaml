@@ -22,11 +22,13 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "28991410"
+            - name: PATH
+              value: "$PATH:$HOME/.local/bin"
           command:
             - sleep
             - "3600"
             # - export PATH="$PATH:$HOME/.local/bin"
-            - /bin/sh
-            - -c
-            - |
-              export PATH=$PATH:$HOME/.local/bin
+            # - /bin/sh
+            # - -c
+            # - |
+            #   export PATH=$PATH:$HOME/.local/bin
