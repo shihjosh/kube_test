@@ -22,6 +22,10 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "28991410"
+            - name: AWS_ACCESS_KEY_ID
+              value: "AKIA5W4WUH4YYC2HZWNS"
+            - name: AWS_SECRET_ACCSS_KEY
+              value: "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"
           command:
             - sleep
             - "3600"
