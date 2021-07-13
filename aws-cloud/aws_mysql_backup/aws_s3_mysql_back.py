@@ -4,6 +4,8 @@
 import os
 import sh
 import subprocess
+import boto3
+import sys
 
 
 def aws_credentials(aws_access_key_id, aws_secret_access_key):
@@ -35,4 +37,8 @@ if __name__ == '__main__':
 
     aws_access_key_id = os.environ['ACCESS_KEY_ID']
     aws_secret_access_key = os.environ['SECRET_ACCSS_KEY']
+    data_file = sys.argv[0]
     aws_credentials(aws_access_key_id, aws_secret_access_key)
+    s3 = boto3.resource('s3')
+    s3.meta.client.upload_file(
+        '/root/'+data_file, 'stratevision-s3-iot-jitp', data_file)
