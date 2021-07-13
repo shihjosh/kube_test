@@ -42,3 +42,4 @@ if __name__ == '__main__':
     s3 = boto3.resource('s3')
     s3.meta.client.upload_file(
         '/root/'+data_file, 'stratevision-s3-iot-jitp', data_file)
+    print('OK!')
