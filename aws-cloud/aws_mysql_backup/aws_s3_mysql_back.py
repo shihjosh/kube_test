@@ -26,6 +26,8 @@ def aws_credentials(aws_access_key_id, aws_secret_access_key):
     path_credentials = '/root/.aws/credentials'
     fc = open(path_credentials, 'w')
     fc.write('[default]\n')
+    # fc.write('aws_access_key_id = AKIA5W4WUH4YYC2HZWNS\n')
+    # fc.write('aws_secret_access_key = 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')
     fc.write('aws_access_key_id = '+key_id+'\n')
     fc.write('aws_secret_access_key = '+secret_key)
     fc.close()
@@ -33,6 +35,6 @@ def aws_credentials(aws_access_key_id, aws_secret_access_key):
 
 if __name__ == '__main__':
 
-    aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID']
-    aws_secret_access_key = os.environ['AWS_SECRET_ACCSS_KEY']
+    aws_access_key_id = os.environ['ACCESS_KEY_ID']
+    aws_secret_access_key = os.environ['SECRET_ACCSS_KEY']
     aws_credentials(aws_access_key_id, aws_secret_access_key)
