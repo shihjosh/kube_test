@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-sqlbackup-deployment
+  labels:
+    app: aws-sqlbackup
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aws-sqlbackup
+  template:
+    metadata:
+      labels:
+        app: aws-sqlbackup
+    spec:
+      containers:
+        - name: aws-sqlbackup
+          image: joshshih/aws-sqlbackup:v03
+          ports:
+            - containerPort: 80
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "28991410"
+          command:
+            - sleep
+            - "3600"
