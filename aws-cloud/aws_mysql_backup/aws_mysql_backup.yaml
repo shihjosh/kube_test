@@ -25,4 +25,8 @@ spec:
           command:
             - sleep
             - "3600"
-            - export PATH="$PATH:$HOME/.local/bin"
+            # - export PATH="$PATH:$HOME/.local/bin"
+            - /bin/sh
+            - -c
+            - |
+              export PATH=$PATH:$HOME/.local/bin
