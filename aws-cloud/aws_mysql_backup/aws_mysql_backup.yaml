@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: aws-sqlbackup
-          image: joshshih/aws-sqlbackup:v05
+          image: joshshih/aws-sqlbackup:v08
           ports:
             - containerPort: 80
           env:
