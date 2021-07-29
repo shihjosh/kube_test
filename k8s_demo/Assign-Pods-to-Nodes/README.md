@@ -1,9 +1,8 @@
-# 安裝 kind
+# Assign-Pods-to-Nodes
 
 環境:
 - ubuntu 20.04 LTS
 - kind
-
 
 1. 給Nodes添加labe
 
