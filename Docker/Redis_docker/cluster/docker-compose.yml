@@ -1,0 +1,68 @@
+version: '3'
+services: 
+    node1:
+        container_name: redis-node1
+        build: 
+            context: redis
+            args:
+            - REDIS_PORT=7000
+        volumes: 
+        - ./data/node1/data:/data
+        network_mode: host
+    node2:
+        container_name: redis-node2
+        build: 
+            context: redis
+            args:
+            - REDIS_PORT=7001
+        volumes: 
+        - ./data/node2/data:/data
+        network_mode: host
+    node3:
+        container_name: redis-node3
+        build: 
+            context: redis
+            args:
+            - REDIS_PORT=7002
+        volumes: 
+        - ./data/node3/data:/data
+        network_mode: host
+    node4:
+        container_name: redis-node4
+        build: 
+            context: redis
+            args:
+            - REDIS_PORT=7003
+        volumes: 
+        - ./data/node4/data:/data
+        network_mode: host
+    node5:
+        container_name: redis-node5
+        build: 
+            context: redis
+            args:
+            - REDIS_PORT=7004
+        volumes: 
+        - ./data/node5/data:/data
+        network_mode: host
+    node6:
+        container_name: redis-node6
+        build: 
+            context: redis
+            args:
+            - REDIS_PORT=7005
+        volumes: 
+        - ./data/node6/data:/data
+        network_mode: host
+    cluster-creator:
+        image: redis
+        container_name: redis-cluster-creator
+        entrypoint: redis-cli --cluster create 192.168.172.193:7000 192.168.172.193:7001 192.168.172.193:7002 192.168.172.193:7003 192.168.172.193:7004 192.168.172.193:7005 --cluster-replicas 1 --cluster-yes
+        network_mode: host
+        depends_on: 
+        - node1
+        - node2
+        - node3
+        - node4
+        - node5
+        - node6
