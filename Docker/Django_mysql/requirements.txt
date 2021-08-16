@@ -1,0 +1,4 @@
+Django>=3.2.3,<3.3
+psycopg2>=2.8.6,<2.9
+mysqlclient==1.4.6
+
