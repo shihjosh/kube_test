@@ -9,7 +9,9 @@
       <h1>HOME</h1>
       <h2>Hello World!</h2>
       <a href="https://www.google.com/">這個連結</a>會連到 Google<br>
-      <a href="http://127.0.0.1:8000/core/other">這個連結</a>會連到 other<br>
+      <a href="{% url 'other' %}">這個連結</a>會連到 other<br>
+      <a href="{% url 'item1' %}">這個連結</a>會連到 item1<br>
+      <a href="{% url 'item2' %}">這個連結</a>會連到 item2<br>
     </div>
   </body>
 </html>

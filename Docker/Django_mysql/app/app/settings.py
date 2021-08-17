@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = True
 DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['9dcd6d458855.ngrok.io']
 ALLOWED_HOSTS.extend(
     filter(
         None,
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates').replace('\\', '/')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates').replace('\\', '/')], # check for filed
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,6 +135,10 @@ USE_TZ = True
 # STATIC_URL = '/static/'
 STATIC_URL = '/static/static/'
 MEDIA_URL = '/static/media/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/static'),
+)
 
 MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
