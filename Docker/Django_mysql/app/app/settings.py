@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = True
 DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
-ALLOWED_HOSTS = ['9dcd6d458855.ngrok.io']
+ALLOWED_HOSTS = ['b582af2aa8ff.ngrok.io','127.0.0.1']
 ALLOWED_HOSTS.extend(
     filter(
         None,
@@ -44,10 +44,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
+    'core', #基本網頁應用
+    'rest_framework', # EmployeeApp API 使用
+    'corsheaders', # EmployeeApp API 使用
+    'EmployeeApp.apps.EmployeeappConfig', # EmployeeApp API 使用
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True  # EmployeeApp API 使用
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # EmployeeApp API 使用
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -120,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
