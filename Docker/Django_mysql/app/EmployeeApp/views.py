@@ -63,7 +63,7 @@ def employeeApi(request,id=0):
         return JsonResponse("Deleted Successfully",safe=False)
 
 @csrf_exempt
-def SaveFile(request):
+def SaveFile(request): # 圖片上傳
     file=request.FILES['file']
     file_name=default_storage.save(file.name,file)
     return JsonResponse(file_name,safe=False)

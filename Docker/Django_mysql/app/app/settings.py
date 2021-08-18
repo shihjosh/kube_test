@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = True
 DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
-ALLOWED_HOSTS = ['b582af2aa8ff.ngrok.io','127.0.0.1']
+ALLOWED_HOSTS = ['bb7a5c43da98.ngrok.io','127.0.0.1']
 ALLOWED_HOSTS.extend(
     filter(
         None,
