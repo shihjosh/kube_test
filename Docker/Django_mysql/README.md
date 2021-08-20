@@ -19,3 +19,17 @@ ngrik http <port>
 
 settings.py need add ALLOWED_HOSTS = ['9dcd6d458855.ngrok.io']
 
+---
+api:GET POST PUT DELETE
+```bash
+[
+    {
+        "DepartmentId": 1,
+        "DepartmentName": "IT"
+    },
+    {
+        "DepartmentId": 2,
+        "DepartmentName": "Support"
+    }
+]
+```
