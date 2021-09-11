@@ -21,6 +21,7 @@ spec:
   selector:
     matchLabels:
       component: mongocfg1
+      run: mongocfg1
   template:
     metadata:
       labels:
@@ -79,6 +80,7 @@ spec:
   selector:
     matchLabels:
       component: mongocfg2
+      run: mongocfg2
   template:
     metadata:
       labels:
@@ -137,6 +139,7 @@ spec:
   selector:
     matchLabels:
       component: mongocfg3
+      run: mongocfg3
   template:
     metadata:
       labels:
