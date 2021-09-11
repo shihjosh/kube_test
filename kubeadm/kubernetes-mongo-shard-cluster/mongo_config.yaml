@@ -4,6 +4,7 @@ metadata:
   name: mongocfg1
   labels:
     run: mongocfg1
+    component: mongocfg1
 spec:
   ports:
     - port: 27019
@@ -27,6 +28,7 @@ spec:
       labels:
         name: mongocfg1
         run: mongocfg1
+        component: mongocfg1
     spec:
       restartPolicy: Always
       hostname: mongocfg1
@@ -63,6 +65,7 @@ metadata:
   name: mongocfg2
   labels:
     run: mongocfg2
+    component: mongocfg2
 spec:
   ports:
     - port: 27019
@@ -86,6 +89,7 @@ spec:
       labels:
         name: mongocfg2
         run: mongocfg2
+        component: mongocfg2
     spec:
       restartPolicy: Always
       hostname: mongocfg2
@@ -122,6 +126,7 @@ metadata:
   name: mongocfg3
   labels:
     run: mongocfg3
+    component: mongocfg3
 spec:
   ports:
     - port: 27019
@@ -145,6 +150,7 @@ spec:
       labels:
         name: mongocfg3
         run: mongocfg3
+        component: mongocfg3
     spec:
       restartPolicy: Always
       hostname: mongocfg3

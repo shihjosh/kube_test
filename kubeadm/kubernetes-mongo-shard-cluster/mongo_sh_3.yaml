@@ -5,12 +5,14 @@ metadata:
   name: mongosh3-1
   labels:
     run: mongosh3-1
+    component: mongosh3-1
 spec:
   ports:
     - port: 27017
       protocol: TCP
   selector:
     run: mongosh3-1
+    component: mongosh3-1
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -18,11 +20,16 @@ metadata:
   name: mongosh3-1
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      component: mongosh3-1
+      run: mongosh3-1
   template:
     metadata:
       labels:
         name: mongosh3-1
         run: mongosh3-1
+        component: mongosh3-1
     spec:
       restartPolicy: Always
       hostname: mongosh3-1
@@ -61,12 +68,14 @@ metadata:
   name: mongosh3-2
   labels:
     run: mongosh3-2
+    component: mongosh3-2
 spec:
   ports:
     - port: 27017
       protocol: TCP
   selector:
     run: mongosh3-2
+    component: mongosh3-2
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -74,11 +83,16 @@ metadata:
   name: mongosh3-2
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      component: mongosh3-2
+      run: mongosh3-2
   template:
     metadata:
       labels:
         name: mongosh3-2
         run: mongosh3-2
+        component: mongosh3-2
     spec:
       restartPolicy: Always
       hostname: mongosh3-2
@@ -117,12 +131,14 @@ metadata:
   name: mongosh3-3
   labels:
     run: mongosh3-3
+    component: mongosh3-3
 spec:
   ports:
     - port: 27017
       protocol: TCP
   selector:
     run: mongosh3-3
+    component: mongosh3-3
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -130,11 +146,16 @@ metadata:
   name: mongosh3-3
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      component: mongosh3-3
+      run: mongosh3-3
   template:
     metadata:
       labels:
         name: mongosh3-3
         run: mongosh3-3
+        component: mongosh3-3
     spec:
       restartPolicy: Always
       hostname: mongosh3-3

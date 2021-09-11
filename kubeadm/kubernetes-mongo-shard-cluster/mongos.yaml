@@ -4,12 +4,14 @@ metadata:
   name: mongos1
   labels:
     run: mongos1
+    component: mongos1
 spec:
   ports:
     - port: 27017
       protocol: TCP
   selector:
     run: mongos1
+    component: mongos1
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -17,11 +19,16 @@ metadata:
   name: mongos1
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      component: mongos1
+      run: mongos1
   template:
     metadata:
       labels:
         name: mongos1
         run: mongos1
+        component: mongos1
     spec:
       restartPolicy: Always
       hostname: mongos1
@@ -52,12 +59,14 @@ metadata:
   name: mongos2
   labels:
     run: mongos2
+    component: mongos2
 spec:
   ports:
     - port: 27017
       protocol: TCP
   selector:
     run: mongos2
+    component: mongos2
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -65,11 +74,16 @@ metadata:
   name: mongos2
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      component: mongos2
+      run: mongos2
   template:
     metadata:
       labels:
         name: mongos2
         run: mongos2
+        component: mongos2
     spec:
       restartPolicy: Always
       hostname: mongos1
