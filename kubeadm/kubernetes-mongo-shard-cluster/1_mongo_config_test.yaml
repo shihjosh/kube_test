@@ -4,13 +4,13 @@ metadata:
   name: mongocfg1
   namespace: mongoshard
   labels:
-    run: mongocfg1
+    app: mongocfg1
 spec:
   ports:
     - port: 27019
       protocol: TCP
   selector:
-    run: mongocfg1
+    app: mongocfg1
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -20,7 +20,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    run: mongocfg1
+    app: mongocfg1
   template:
     metadata:
       labels:
