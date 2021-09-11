@@ -10,6 +10,7 @@ spec:
       protocol: TCP
   selector:
     run: mongocfg1
+    component: mongocfg1
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -67,6 +68,7 @@ spec:
       protocol: TCP
   selector:
     run: mongocfg2
+    component: mongocfg2
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -124,6 +126,7 @@ spec:
       protocol: TCP
   selector:
     run: mongocfg3
+    component: mongocfg3
 ---
 apiVersion: apps/v1
 kind: Deployment
