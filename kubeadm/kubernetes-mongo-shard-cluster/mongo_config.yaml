@@ -17,6 +17,7 @@ metadata:
   name: mongocfg1
 spec:
   replicas: 1
+  selector:
   template:
     metadata:
       labels:
