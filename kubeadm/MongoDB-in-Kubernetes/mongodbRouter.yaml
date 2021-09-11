@@ -6,13 +6,13 @@ metadata:
     name: mongorouter
 spec:
   ports:
-  - port: 27017
-    targetPort: 27017
+    - port: 27017
+      targetPort: 27017
   clusterIP: None
   selector:
     role: mongorouter
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongosrouter
@@ -33,16 +33,16 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: replicaset
-                  operator: In
-                  values:
-                  - mongorouters
-              topologyKey: kubernetes.io/hostname
-      terminationGracePeriodSeconds: 10      
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: replicaset
+                      operator: In
+                      values:
+                        - mongorouters
+                topologyKey: kubernetes.io/hostname
+      terminationGracePeriodSeconds: 10
       containers:
         - name: mongosroutercontainer
           image: mongo:3.6.2
@@ -50,7 +50,7 @@ spec:
             - "numactl"
             - "--interleave=all"
             - "mongos"
-            - "--configdb"            
+            - "--configdb"
             - "mongoreplicaset1config/mongodbconfigstateful-0.mongodbconfigservice.default.svc.cluster.local:27017,mongodbconfigstateful-1.mongodbconfigservice.default.svc.cluster.local:27017,mongodbconfigstateful-2.mongodbconfigservice.default.svc.cluster.local:27017"
             - "--bind_ip_all"
             - "--port"
@@ -60,9 +60,9 @@ spec:
           readinessProbe:
             exec:
               command:
-              - mongo
-              - --eval
-              - "db.getMongo()"
+                - mongo
+                - --eval
+                - "db.getMongo()"
             initialDelaySeconds: 60
             periodSeconds: 30
             timeoutSeconds: 60
@@ -70,9 +70,9 @@ spec:
           livenessProbe:
             exec:
               command:
-              - mongo
-              - --eval
-              - "db.getMongo()"
+                - mongo
+                - --eval
+                - "db.getMongo()"
             initialDelaySeconds: 60
             periodSeconds: 30
             timeoutSeconds: 60

@@ -6,13 +6,13 @@ metadata:
     name: mongoshard
 spec:
   ports:
-  - port: 27017
-    targetPort: 27017
+    - port: 27017
+      targetPort: 27017
   clusterIP: None
   selector:
     role: mongoshard
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongodbshardstateful2
@@ -33,16 +33,16 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 50 #set to 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: replicaset
-                  operator: In
-                  values:
-                  - mongoshards2
-              topologyKey: kubernetes.io/hostname
-      terminationGracePeriodSeconds: 10      
+            - weight: 50 #set to 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: replicaset
+                      operator: In
+                      values:
+                        - mongoshards2
+                topologyKey: kubernetes.io/hostname
+      terminationGracePeriodSeconds: 10
       containers:
         - name: mongodshardcontainer
           image: mongo:3.6.2
@@ -50,39 +50,39 @@ spec:
             - "numactl"
             - "--interleave=all"
             - "mongod"
-            - "--shardsvr"            
+            - "--shardsvr"
             - "--replSet"
             - "mongoreplicaset2shard"
             - "--bind_ip_all"
             - "--port"
             - "27017"
-           # - "--wiredTigerCacheSizeGB"
-           # - "0.5"
-           # - "--auth"
-           # - "--clusterAuthMode"
-           # - "keyFile" or can be "x509"
-           # - "--keyFile"
-           # - "keyfile path"
-           # - "--setParameter"
-           # - "authenticationMechanisms=SCRAM-SHA-1"
+            # - "--wiredTigerCacheSizeGB"
+            # - "0.5"
+            # - "--auth"
+            # - "--clusterAuthMode"
+            # - "keyFile" or can be "x509"
+            # - "--keyFile"
+            # - "keyfile path"
+            # - "--setParameter"
+            # - "authenticationMechanisms=SCRAM-SHA-1"
           ports:
             - containerPort: 27017
           lifecycle:
             #postStart:
-              #exec:
-                #command: ["/bin/sh", "-c", "rm -rfd /data/db/*"]
+            #exec:
+            #command: ["/bin/sh", "-c", "rm -rfd /data/db/*"]
             preStop:
               exec:
                 command: ["/bin/sh", "-c", "rm -rfd /data/db/*"]
-          volumeMounts:           
+          volumeMounts:
             - name: mongodbshardpvc2
               mountPath: /data/db
           readinessProbe:
             exec:
               command:
-              - mongo
-              - --eval
-              - "db.getMongo()"
+                - mongo
+                - --eval
+                - "db.getMongo()"
             initialDelaySeconds: 30
             periodSeconds: 20
             timeoutSeconds: 120
@@ -90,19 +90,19 @@ spec:
           livenessProbe:
             exec:
               command:
-              - mongo
-              - --eval
-              - "db.getMongo()"
+                - mongo
+                - --eval
+                - "db.getMongo()"
             initialDelaySeconds: 30
             periodSeconds: 20
             timeoutSeconds: 120
             failureThreshold: 6
   volumeClaimTemplates:
-  - metadata:
-      name: mongodbshardpvc2
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: sharedfs
-      resources:
-        requests:
-          storage: 5Gi
+    - metadata:
+        name: mongodbshardpvc2
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: sharedfs
+        resources:
+          requests:
+            storage: 5Gi
