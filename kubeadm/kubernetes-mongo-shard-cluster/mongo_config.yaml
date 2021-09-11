@@ -18,6 +18,8 @@ metadata:
 spec:
   replicas: 1
   selector:
+    matchLabels:
+      component: mongocfg1
   template:
     metadata:
       labels:
@@ -73,6 +75,8 @@ metadata:
 spec:
   replicas: 1
   selector:
+    matchLabels:
+      component: mongocfg2
   template:
     metadata:
       labels:
@@ -128,6 +132,8 @@ metadata:
 spec:
   replicas: 1
   selector:
+    matchLabels:
+      component: mongocfg3
   template:
     metadata:
       labels:
