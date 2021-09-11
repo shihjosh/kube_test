@@ -72,6 +72,7 @@ metadata:
   name: mongocfg2
 spec:
   replicas: 1
+  selector:
   template:
     metadata:
       labels:
@@ -126,6 +127,7 @@ metadata:
   name: mongocfg3
 spec:
   replicas: 1
+  selector:
   template:
     metadata:
       labels:
