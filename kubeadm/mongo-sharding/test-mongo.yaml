@@ -1,0 +1,19 @@
+apiVersion: kubedb.com/v1alpha2
+kind: MongoDB
+metadata:
+  name: mongodb-replicaset
+  namespace: op
+spec:
+  version: "4.2.3"
+  replicas: 3
+  replicaSet:
+    name: rs0
+  configSecret:
+    name: mg-configuration
+  storage:
+    storageClassName: "rbd"
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
