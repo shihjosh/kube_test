@@ -20,7 +20,7 @@ done
 
 
 #Initializating configuration nodes
-POD_NAME=$( -n mongoshard get pods | grep "mongocfg1" | awk '{print $1;}')
+POD_NAME=$(kubectl -n mongoshard get pods | grep "mongocfg1" | awk '{print $1;}')
 echo "Initializating config replica set... connecting to: $POD_NAME"
 CMD='rs.initiate({ _id : "cfgrs", configsvr: true, members: [{ _id : 0, host : "mongocfg1:27019" },{ _id : 1, host : "mongocfg2:27019" },{ _id : 2, host : "mongocfg3:27019" }]})'
 kubectl -n mongoshard exec -it $POD_NAME -- bash -c "mongo --port 27019 --eval '$CMD'"
