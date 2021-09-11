@@ -25,7 +25,7 @@ spec:
     metadata:
       labels:
         name: mongocfg1
-        run: mongocfg1
+        app: mongocfg1
     spec:
       restartPolicy: Always
       hostname: mongocfg1
