@@ -19,6 +19,8 @@ metadata:
   namespace: mongoshard
 spec:
   replicas: 1
+  selector:
+    run: mongocfg1
   template:
     metadata:
       labels:
