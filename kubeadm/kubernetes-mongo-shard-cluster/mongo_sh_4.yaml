@@ -7,12 +7,12 @@ metadata:
     run: mongosh4-1
 spec:
   ports:
-  - port: 27017
-    protocol: TCP
+    - port: 27017
+      protocol: TCP
   selector:
     run: mongosh4-1
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongosh4-1
@@ -27,16 +27,28 @@ spec:
       restartPolicy: Always
       hostname: mongosh4-1
       containers:
-      - image: mongo:latest
-        name: mongosh4-1
-        ports:
-        - name: mongosh4-1
-          containerPort: 27017
-        volumeMounts:
+        - image: mongo:4.4.2
+          name: mongosh4-1
+          ports:
+            - name: mongosh4-1
+              containerPort: 27017
+          volumeMounts:
             - name: mongosh4-1
               mountPath: /data/db
-        command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "rs4", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+          command: ["mongod"]
+          args:
+            [
+              "--noprealloc",
+              "--smallfiles",
+              "--replSet",
+              "rs4",
+              "--dbpath",
+              "/data/db",
+              "--noauth",
+              "--port",
+              "27017",
+              "--bind_ip_all",
+            ]
       volumes:
         - name: mongosh4-1
           #persistentVolumeClaim:
@@ -51,12 +63,12 @@ metadata:
     run: mongosh4-2
 spec:
   ports:
-  - port: 27017
-    protocol: TCP
+    - port: 27017
+      protocol: TCP
   selector:
     run: mongosh4-2
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongosh4-2
@@ -71,16 +83,28 @@ spec:
       restartPolicy: Always
       hostname: mongosh4-2
       containers:
-      - image: mongo:latest
-        name: mongosh4-2
-        ports:
-        - name: mongosh4-2
-          containerPort: 27017
-        volumeMounts:
+        - image: mongo:4.4.2
+          name: mongosh4-2
+          ports:
+            - name: mongosh4-2
+              containerPort: 27017
+          volumeMounts:
             - name: mongosh4-2
               mountPath: /data/db
-        command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "rs4", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+          command: ["mongod"]
+          args:
+            [
+              "--noprealloc",
+              "--smallfiles",
+              "--replSet",
+              "rs4",
+              "--dbpath",
+              "/data/db",
+              "--noauth",
+              "--port",
+              "27017",
+              "--bind_ip_all",
+            ]
       volumes:
         - name: mongosh4-2
           #persistentVolumeClaim:
@@ -95,12 +119,12 @@ metadata:
     run: mongosh4-3
 spec:
   ports:
-  - port: 27017
-    protocol: TCP
+    - port: 27017
+      protocol: TCP
   selector:
     run: mongosh4-3
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongosh4-3
@@ -115,16 +139,28 @@ spec:
       restartPolicy: Always
       hostname: mongosh4-3
       containers:
-      - image: mongo:latest
-        name: mongosh4-3
-        ports:
-        - name: mongosh4-3
-          containerPort: 27017
-        volumeMounts:
+        - image: mongo:4.4.2
+          name: mongosh4-3
+          ports:
+            - name: mongosh4-3
+              containerPort: 27017
+          volumeMounts:
             - name: mongosh4-3
               mountPath: /data/db
-        command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "rs4", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+          command: ["mongod"]
+          args:
+            [
+              "--noprealloc",
+              "--smallfiles",
+              "--replSet",
+              "rs4",
+              "--dbpath",
+              "/data/db",
+              "--noauth",
+              "--port",
+              "27017",
+              "--bind_ip_all",
+            ]
       volumes:
         - name: mongosh4-3
           #persistentVolumeClaim:

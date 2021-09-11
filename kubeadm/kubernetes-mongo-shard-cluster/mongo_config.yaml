@@ -6,12 +6,12 @@ metadata:
     run: mongocfg1
 spec:
   ports:
-  - port: 27019
-    protocol: TCP
+    - port: 27019
+      protocol: TCP
   selector:
     run: mongocfg1
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongocfg1
@@ -26,16 +26,27 @@ spec:
       restartPolicy: Always
       hostname: mongocfg1
       containers:
-      - image: mongo:latest
-        name: mongocfg1
-        ports:
-        - name: mongocfg1
-          containerPort: 27019
-        volumeMounts:
+        - image: mongo:4.4.2
+          name: mongocfg1
+          ports:
+            - name: mongocfg1
+              containerPort: 27019
+          volumeMounts:
             - name: mongocfg1
               mountPath: /data/db
-        command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--noauth", "--bind_ip_all"]
+          command: ["mongod"]
+          args:
+            [
+              "--noprealloc",
+              "--smallfiles",
+              "--replSet",
+              "cfgrs",
+              "--dbpath",
+              "/data/db",
+              "--configsvr",
+              "--noauth",
+              "--bind_ip_all",
+            ]
       volumes:
         - name: mongocfg1
           #persistentVolumeClaim:
@@ -49,12 +60,12 @@ metadata:
     run: mongocfg2
 spec:
   ports:
-  - port: 27019
-    protocol: TCP
+    - port: 27019
+      protocol: TCP
   selector:
     run: mongocfg2
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongocfg2
@@ -69,16 +80,27 @@ spec:
       restartPolicy: Always
       hostname: mongocfg2
       containers:
-      - image: mongo:latest
-        name: mongocfg2
-        ports:
-        - name: mongocfg2
-          containerPort: 27019
-        volumeMounts:
+        - image: mongo:4.4.2
+          name: mongocfg2
+          ports:
+            - name: mongocfg2
+              containerPort: 27019
+          volumeMounts:
             - name: mongocfg2
               mountPath: /data/db
-        command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--noauth", "--bind_ip_all"]
+          command: ["mongod"]
+          args:
+            [
+              "--noprealloc",
+              "--smallfiles",
+              "--replSet",
+              "cfgrs",
+              "--dbpath",
+              "/data/db",
+              "--configsvr",
+              "--noauth",
+              "--bind_ip_all",
+            ]
       volumes:
         - name: mongocfg2
           #persistentVolumeClaim:
@@ -92,12 +114,12 @@ metadata:
     run: mongocfg3
 spec:
   ports:
-  - port: 27019
-    protocol: TCP
+    - port: 27019
+      protocol: TCP
   selector:
     run: mongocfg3
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongocfg3
@@ -112,16 +134,27 @@ spec:
       restartPolicy: Always
       hostname: mongocfg3
       containers:
-      - image: mongo:latest
-        name: mongocfg3
-        ports:
-        - name: mongocfg3
-          containerPort: 27019
-        volumeMounts:
+        - image: mongo:4.4.2
+          name: mongocfg3
+          ports:
+            - name: mongocfg3
+              containerPort: 27019
+          volumeMounts:
             - name: mongocfg3
               mountPath: /data/db
-        command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--noauth", "--bind_ip_all"]
+          command: ["mongod"]
+          args:
+            [
+              "--noprealloc",
+              "--smallfiles",
+              "--replSet",
+              "cfgrs",
+              "--dbpath",
+              "/data/db",
+              "--configsvr",
+              "--noauth",
+              "--bind_ip_all",
+            ]
       volumes:
         - name: mongocfg3
           #persistentVolumeClaim:
