@@ -58,3 +58,13 @@ spec:
       #   - name: mongocfg1
       #     #persistentVolumeClaim:
       #     #  claimName: mongocfg1
+  volumeClaimTemplates:
+    - metadata:
+        name: mongocfg1
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: "nfs-storage"
+        resources:
+          requests:
+            storage: 5Gi
