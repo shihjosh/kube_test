@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: hs-storage-pv
+  name: mongocfg1-pv
 spec:
   capacity:
     storage: 10Gi
@@ -9,41 +9,16 @@ spec:
     - ReadWriteMany
   nfs:
     server: 192.168.172.199
-    path: "/var/nfsshare/stag/hs_plus/storage/"
+    path: "/var/nfsshare/kubeadm/redis_cluster/redis0/"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: hs-storage-pvc
+  name: mongocfg1-pvc
 spec:
   accessModes:
     - ReadWriteMany
   storageClassName: ""
   resources:
     requests:
-      storage: 10Gi
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: hs-plus-well-known-pv
-# spec:
-#   capacity:
-#     storage: 1Gi
-#   accessModes:
-#     - ReadWriteMany
-#   nfs:
-#     server: 192.168.172.199
-#     path: "/var/nfsshare/stag/hs_plus/.well-known/"
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: hs-plus-well-known-pvc
-# spec:
-#   accessModes:
-#     - ReadWriteMany
-#   storageClassName: ""
-#   resources:
-#     requests:
-#       storage: 1Gi
+      storage: 2Gi
