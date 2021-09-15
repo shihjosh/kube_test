@@ -54,7 +54,7 @@ spec:
               "--noauth",
               "--bind_ip_all",
             ]
-      volumes:
-        - name: mongocfg1
-          #persistentVolumeClaim:
-          #  claimName: mongocfg1
+      # volumes:
+      #   - name: mongocfg1
+      #     #persistentVolumeClaim:
+      #     #  claimName: mongocfg1
