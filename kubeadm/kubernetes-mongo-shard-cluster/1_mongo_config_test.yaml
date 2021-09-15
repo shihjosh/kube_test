@@ -41,6 +41,7 @@ spec:
           volumeMounts:
             - name: mongocfg1
               mountPath: /data/db
+              subPath: db
           command: ["mongod"]
           args:
             [
