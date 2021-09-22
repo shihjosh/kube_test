@@ -1,0 +1,10 @@
+version: '3'
+services:
+  standalone:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    command: mongod --dbpath /data/db --port 27017 --config /resource/mongod.yml
+    volumes:
+      - ./standalone/config/mongod.yml:/resource/mongod.yml
+      - ./standalone/data:/data/db

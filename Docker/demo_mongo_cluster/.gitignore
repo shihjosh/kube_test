@@ -1,0 +1,4 @@
+.idea
+standalone/data
+replica/data
+sharded/data
