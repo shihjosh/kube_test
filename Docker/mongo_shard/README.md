@@ -204,7 +204,11 @@ db.users.insertMany([{name: 'user1'}, {name: 'user2'}])
 在 Totals 區塊中顯示 Shard1, Shard1 分別個放了 50% 的資料，也就剛剛放的資料被平均分散到這二個分片中。
 
 文件參考:
-1.https://tw.alphacamp.co/blog/mongodb-with-docker
-2.https://docs.mongodb.com/
+1. https://tw.alphacamp.co/blog/mongodb-with-docker
+
+2. https://docs.mongodb.com/
+
+3. https://docs.mongodb.com/manual/sharding/
+
 
 
