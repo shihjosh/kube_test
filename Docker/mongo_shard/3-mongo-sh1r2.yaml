@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sh1r2-svc
+spec:
+  type: ClusterIP
+  selector:
+    component: mongo-sh1r2
+  ports:
+    - port: 27019
+      targetPort: 27019
+      name: sh1r2
+      protocol: TCP
+    - port: 27017
+      targetPort: 27017
+      name: sh1r22
+      protocol: TCP
+    - port: 27018
+      targetPort: 27018
+      name: sh1r222
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mongo-sh1r2
+  name: mongo-sh1r2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mongo-sh1r2
+  template:
+    metadata:
+      labels:
+        component: mongo-sh1r2
+    spec:
+      containers:
+        - name: mongo-sh1r2
+          image: mongo:4.4.2 # mongo:5.0
+          command: ["mongod"]
+          args: [
+              # "--noprealloc",
+              # "--smallfiles",
+              "--replSet",
+              "Shard1",
+              "--dbpath",
+              "/data/db",
+              "--shardsvr",
+              "--noauth",
+              # "--bind_ip_all",
+              "--bind_ip",
+              "0.0.0.0",
+            ]
+          ports:
+            - containerPort: 27017
+            - containerPort: 27018
+            - containerPort: 27019
+          volumeMounts:
+            - name: mongo-sh1r2-storage
+              mountPath: /data/db
+      volumes:
+        - name: mongo-sh1r2-storage
+          persistentVolumeClaim:
+            claimName: hs-sh1r2-pvc

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: router-svc
+spec:
+  # type: ClusterIP
+  type: NodePort
+  selector:
+    component: mongo-router
+  ports:
+    # - port: 27019
+    #   targetPort: 27019
+    #   name: router
+    #   protocol: TCP
+    - port: 27017
+      targetPort: 27017
+      nodePort: 30700
+      name: router1
+      protocol: TCP
+    # - port: 27017
+    #   targetPort: 27017
+    #   name: router1
+    #   protocol: TCP
+    # - port: 27018
+    #   targetPort: 27018
+    #   name: router11
+    #   protocol: TCP

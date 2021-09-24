@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: config3-svc
+spec:
+  type: ClusterIP
+  selector:
+    component: mongo-config3
+  ports:
+    - port: 27019
+      targetPort: 27019
+      name: config3
+      protocol: TCP
+    - port: 27017
+      targetPort: 27017
+      name: config33
+      protocol: TCP
+    - port: 27018
+      targetPort: 27018
+      name: config333
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mongo-config3
+  name: mongo-config3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mongo-config3
+  template:
+    metadata:
+      labels:
+        component: mongo-config3
+    spec:
+      containers:
+        - name: mongo-config3
+          image: mongo:4.4.2 # mongo:5.0
+          # command:
+          #   - mongod
+          #   - "--configsvr"
+          #   - "--replSet"
+          #   - Config
+          #   - "--bind_ip"
+          #   - 0.0.0.0
+          command: ["mongod"]
+          args: [
+              # "--noprealloc",
+              # "--smallfiles",
+              "--replSet",
+              "Config",
+              "--dbpath",
+              "/data/db",
+              "--configsvr",
+              "--noauth",
+              # "--bind_ip_all",
+              "--bind_ip",
+              "0.0.0.0",
+            ]
+          ports:
+            - containerPort: 27019
+            - containerPort: 27017
+            - containerPort: 27018
+          volumeMounts:
+            - name: mongo-config3-storage
+              mountPath: /data/db
+      volumes:
+        - name: mongo-config3-storage
+          persistentVolumeClaim:
+            claimName: hs-config3-pvc

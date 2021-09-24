@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-sh1r1-pv
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    # FIXME: use the right IP
+    server: 192.168.172.199
+    path: "/var/nfsshare/dev/sharded/data/sh1r1/"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hs-sh1r1-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 2Gi
