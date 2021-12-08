@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+
+  # Our application to debug
+  app:
+    container_name: tuto-xdebug
+    build:
+      context: ./
+      dockerfile: ./dockerfile
+    ports:
+      - '80:80'
+    volumes:
+        - './index.php:/var/www/html/index.php'
+        - './xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini'
+    environment:
+      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9003 remote_enable=1
+      # XDEBUG_CONFIG: remote_host=192.68.11.104 remote_port=9003 remote_enable=1
+      # XDEBUG_CONFIG: client_host=host.docker.internal remote_port=9003 remote_enable=1
