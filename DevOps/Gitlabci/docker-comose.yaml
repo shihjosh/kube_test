@@ -1,45 +1,32 @@
 version: "3"
 services:
-  gitlab:
-    container_name: "gitlab"
-    environment:
-      DEBUG: "false"
-      GITLAB_PORT: 10080
-      GITLAB_SSH_PORT: 10022
-      GITLAB_SECRETS_DB_KEY_BASE: qcs-gitlab-app
-      GITLAB_SECRETS_OTP_KEY_BASE: qcs-gitlab-app
-      GITLAB_SECRETS_SECRET_KEY_BASE: qcs-gitlab-app
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url http://127.0.0.1:10080
-        pages_external_url http://pages.example.io
-        gitlab_pages['enable'] = true
-        nginx['listen_port'] = 80
-        nginx['enable'] = true
-    image: gitlab/gitlab-ce:latest
-    links:
-      - redis:redisio
-      - postgresql:postgresql
-    ports:
-      - "10080:80"
-    restart: always
-    hostname: "127.0.0.1:10080"
 
-  postgresql:
-    environment:
-      DB_EXTENSION: pg_trgm
-      DB_NAME: gitlabhq_production
-      DB_PASS: password
-      DB_USER: gitlab
-    image: sameersbn/postgresql:9.6-2
-    restart: always
+gitlab:
+  image: gitlab/gitlab-ce:latest
+  restart: always
+  networks:
+    - sv
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'http://127.0.0.1:10080'
+      prometheus_monitoring['enable'] = false
+      postgresql['shared_buffers'] = "256MB"
+      sidekiq['concurrency'] = 2
+      #letsencrypt['enable'] = false
+      # Add any other gitlab.rb configuration here, each on its own line
+  ports:
+    - "10080:80"
+    - "10443:443"
+    #- "10022:22"
+  volumes:
+    - ./gitlab:/etc/gitlab
+    - ./gitlab-logs:/var/log/gitlab
+    - ./gitlab-data:/var/opt/gitlab
 
-  redis:
-    command:
-      - --loglevel warning
-    image: sameersbn/redis:latest
-    restart: always
-
-  runner:
-    image: gitlab/gitlab-runner:latest
-    container_name: "gitlab-runner"
-    restart: always
+gitlab-runner:
+  image: gitlab/gitlab-runner:latest
+  container_name: "gitlab-runner"
+  restart: always
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - ./gitlab-runner-config:/etc/gitlab-runner
