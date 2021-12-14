@@ -1,23 +1,23 @@
 version: "3"
 services:
   gitlab:
-    image: 'gitlab/gitlab-ce:latest'
+    image: 'gitlab/gitlab-ce:14.5.2-ce.0'
     restart: always
-    hostname: 'gitlab.example.com'
+    hostname: '192.168.93.132'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.example.com'
+        external_url 'http://192.168.93.132'
     ports:
       - '80:80'
       - '443:443'
-      - '22:22'
+        #- '22:22'
     volumes:
       - ./gitlab:/etc/gitlab
       - ./gitlab-logs:/var/log/gitlab
       - ./gitlab-data:/var/opt/gitlab
 
   gitlab-runner:
-    image: gitlab/gitlab-runner:latest
+    image: gitlab/gitlab-runner:v14.4.2
     container_name: "gitlab-runner"
     restart: always
     volumes:
