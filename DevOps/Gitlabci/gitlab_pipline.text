@@ -1,0 +1,16 @@
+image: docker:stable
+
+stages:
+  - build
+  - test
+  
+job1:
+  stage: build
+  image: python:3.7
+  script:
+    - echo "Build, ok"
+
+job2:
+  stage: test
+  script:
+    - echo "Test, ok"
