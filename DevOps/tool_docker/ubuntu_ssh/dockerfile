@@ -1,0 +1,5 @@
+FROM ubuntu:20.04
+
+# Install Xdebug
+RUN command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )
+# RUN apt-get update -y && apt-get install openssh-client -y

@@ -1,0 +1,6 @@
+FROM docker:latest
+
+# Install Xdebug
+RUN apk add --no-cache curl jq python3 py3-pip
+RUN pip install awscli
+# RUN apt-get update -y && apt-get install openssh-client -y
