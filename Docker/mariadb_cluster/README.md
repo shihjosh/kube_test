@@ -49,28 +49,28 @@ SELECT * FROM mysql.plugin;
 ```
 Create the spider table on the Spider Node:
 ```bash
-CREATE SERVER mariadb1 
+CREATE SERVER mariadb_1 
   FOREIGN DATA WRAPPER mysql 
 OPTIONS( 
-  HOST 'mariadb1', 
+  HOST 'mariadb_1', 
   DATABASE 'test1',
   USER 'root',
   PASSWORD '123456',
   PORT 3306
 );
-CREATE SERVER mariadb2
+CREATE SERVER mariadb_2
   FOREIGN DATA WRAPPER mysql 
 OPTIONS( 
-  HOST 'mariadb2', 
+  HOST 'mariadb_2', 
   DATABASE 'test1',
   USER 'root',
   PASSWORD '123456',
   PORT 3306
 );
-CREATE SERVER mariadb3
+CREATE SERVER mariadb_3
   FOREIGN DATA WRAPPER mysql 
 OPTIONS( 
-  HOST 'mariadb3', 
+  HOST 'mariadb_3', 
   DATABASE 'test1',
   USER 'root',
   PASSWORD '123456',
