@@ -1,0 +1,34 @@
+docker images
+- joshshih/cordovajdk:v8
+
+#建置環境
+docker image build -t joshshih/cordovajdk:v8 .
+
+#進入容器
+docker run -it -v <專案目錄>:/opt/src --rm joshshih/cordovajdk:v8 bash
+
+#安裝套件
+npm i
+
+#新增android平台
+cd cordova
+mkdir www #補上遺失的目錄
+cordova platform remove android <<< Y
+cordova platform add android@8.1.0 # for Android 4.4.2 如果需要更高版本支援如下說明
+cordova plugin add cordova-plugin-video-player #安裝錯誤所以在裝一次
+
+#建置APK
+cd ..
+npm run cordova-staging
+npm run test-android
+
+
+
+#更高版本支援
+cordova platform remove android 
+cordova platform add android@9.0.0 # for  playtv2 (android 9) x96x4 (android 11)
+
+
+
+
+
